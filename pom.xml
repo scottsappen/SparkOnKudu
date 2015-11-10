@@ -333,6 +333,11 @@
               </exclusion>
           </exclusions>
       </dependency>
+      <dependency>
+          <groupId>org.apache.flume.flume-ng-sinks</groupId>
+          <artifactId>flume-dataset-sink</artifactId>
+          <version>1.6.0</version>
+      </dependency>
 
   </dependencies>
 
