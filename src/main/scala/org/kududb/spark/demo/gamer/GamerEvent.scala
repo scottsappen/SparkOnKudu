@@ -13,7 +13,8 @@ class GamerEvent(var gamerId:String = "",
                  var isInsert:Boolean = false,
                  var maxOksInOneGame:Int = 0,
                  var maxDeathsInOneGame:Int = 0,
-                 var hasChanged:Boolean = false) extends Serializable {
+                 var hasChanged:Boolean = false,
+                 var points:Int = 0) extends Serializable {
 
   override def toString():String = {
     gamerId + "," +
@@ -26,7 +27,9 @@ class GamerEvent(var gamerId:String = "",
       damageTaken + "," +
       isInsert + "," +
       maxOksInOneGame + "," +
-      maxDeathsInOneGame
+      maxDeathsInOneGame + "," +
+      hasChanged + "," +
+      points
   }
 
   def += (gamerEvent: GamerEvent): Unit = {
@@ -41,6 +44,7 @@ class GamerEvent(var gamerId:String = "",
     if (oks > maxOksInOneGame) maxOksInOneGame = oks
     if (deaths > maxDeathsInOneGame) maxDeathsInOneGame = deaths
     isInsert = isInsert && gamerEvent.isInsert
+    points += gamerEvent.points
   }
 }
 
@@ -60,6 +64,8 @@ object GamerEventBuilder extends Serializable  {
       parts(7).toInt,
       parts(8).equals("true"),
       parts(9).toInt,
-      parts(10).toInt)
+      parts(10).toInt,
+      parts(11).equals("true"),
+      parts(12).toInt)
   }
 }

@@ -35,7 +35,7 @@ object KafkaProducerGenerator {
       producer.send(message)
 
       if (i % 10 == 0) {
-        Thread.sleep(sleepTimeEvery10Records)
+        //Thread.sleep(sleepTimeEvery10Records)
         print(".")
       }
       if (i % 2000 == 0) {
@@ -78,7 +78,12 @@ object KafkaProducerGenerator {
         random.nextInt(10),
         random.nextInt(20),
         random.nextInt(1000),
-        random.nextInt(2000))
+        random.nextInt(2000),
+        false,
+        0,
+        0,
+        false,
+        random.nextInt(10))
     } else if (playerSelection < advancedPlayerPercentage) {
       val gamerId = random.nextInt(numOfGamers/100) * 100 + playerSelection
 
@@ -89,7 +94,12 @@ object KafkaProducerGenerator {
         random.nextInt(20),
         random.nextInt(18),
         random.nextInt(2000),
-        random.nextInt(2000))
+        random.nextInt(2000),
+        false,
+        0,
+        0,
+        false,
+        random.nextInt(10))
     } else {
       val gamerId = random.nextInt(numOfGamers/100) * 100 + playerSelection
 
@@ -100,7 +110,12 @@ object KafkaProducerGenerator {
         random.nextInt(20),
         random.nextInt(10),
         random.nextInt(4000),
-        random.nextInt(1500))
+        random.nextInt(1500),
+        false,
+        0,
+        0,
+        false,
+        random.nextInt(10))
     }
   }
 }
